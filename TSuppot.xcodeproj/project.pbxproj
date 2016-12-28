@@ -12,9 +12,15 @@
 		433C15951E1297C800B5FB5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 433C15931E1297C800B5FB5F /* Main.storyboard */; };
 		433C15971E1297C800B5FB5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 433C15961E1297C800B5FB5F /* Assets.xcassets */; };
 		433C159A1E1297C800B5FB5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 433C15981E1297C800B5FB5F /* LaunchScreen.storyboard */; };
-		433C15A51E129C8200B5FB5F /* TExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433C15A21E129C8200B5FB5F /* TExtensions.swift */; };
-		433C15A61E129C8200B5FB5F /* TLocalisationStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433C15A31E129C8200B5FB5F /* TLocalisationStringExtension.swift */; };
-		433C15A71E129C8200B5FB5F /* TSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433C15A41E129C8200B5FB5F /* TSupport.swift */; };
+		4352711C1E1395F500EA8113 /* TSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435271191E1395F500EA8113 /* TSupport.swift */; };
+		435271311E1396F000EA8113 /* TExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352712C1E1396F000EA8113 /* TExtensions.swift */; };
+		435271341E1396F000EA8113 /* TView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352712F1E1396F000EA8113 /* TView.swift */; };
+		435271351E1396F000EA8113 /* TViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435271301E1396F000EA8113 /* TViewController.swift */; };
+		435271371E13974100EA8113 /* TString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435271361E13974100EA8113 /* TString.swift */; };
+		435271391E13976300EA8113 /* TData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435271381E13976300EA8113 /* TData.swift */; };
+		4352713B1E13979B00EA8113 /* TTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352713A1E13979B00EA8113 /* TTableView.swift */; };
+		4352713D1E1397D400EA8113 /* TImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352713C1E1397D400EA8113 /* TImage.swift */; };
+		4352713F1E1397FB00EA8113 /* TColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352713E1E1397FB00EA8113 /* TColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,9 +31,15 @@
 		433C15961E1297C800B5FB5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		433C15991E1297C800B5FB5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		433C159B1E1297C800B5FB5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		433C15A21E129C8200B5FB5F /* TExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TExtensions.swift; sourceTree = "<group>"; };
-		433C15A31E129C8200B5FB5F /* TLocalisationStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLocalisationStringExtension.swift; sourceTree = "<group>"; };
-		433C15A41E129C8200B5FB5F /* TSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSupport.swift; sourceTree = "<group>"; };
+		435271191E1395F500EA8113 /* TSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSupport.swift; sourceTree = "<group>"; };
+		4352712C1E1396F000EA8113 /* TExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TExtensions.swift; sourceTree = "<group>"; };
+		4352712F1E1396F000EA8113 /* TView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TView.swift; sourceTree = "<group>"; };
+		435271301E1396F000EA8113 /* TViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TViewController.swift; sourceTree = "<group>"; };
+		435271361E13974100EA8113 /* TString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TString.swift; sourceTree = "<group>"; };
+		435271381E13976300EA8113 /* TData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TData.swift; sourceTree = "<group>"; };
+		4352713A1E13979B00EA8113 /* TTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTableView.swift; sourceTree = "<group>"; };
+		4352713C1E1397D400EA8113 /* TImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TImage.swift; sourceTree = "<group>"; };
+		4352713E1E1397FB00EA8113 /* TColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +56,7 @@
 		433C15831E1297C800B5FB5F = {
 			isa = PBXGroup;
 			children = (
-				433C15A11E129C8200B5FB5F /* Classes */,
+				435271161E1395F500EA8113 /* src */,
 				433C158E1E1297C800B5FB5F /* TSuppot */,
 				433C158D1E1297C800B5FB5F /* Products */,
 			);
@@ -71,14 +83,20 @@
 			path = TSuppot;
 			sourceTree = "<group>";
 		};
-		433C15A11E129C8200B5FB5F /* Classes */ = {
+		435271161E1395F500EA8113 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				433C15A21E129C8200B5FB5F /* TExtensions.swift */,
-				433C15A31E129C8200B5FB5F /* TLocalisationStringExtension.swift */,
-				433C15A41E129C8200B5FB5F /* TSupport.swift */,
+				4352712C1E1396F000EA8113 /* TExtensions.swift */,
+				4352712F1E1396F000EA8113 /* TView.swift */,
+				435271301E1396F000EA8113 /* TViewController.swift */,
+				435271191E1395F500EA8113 /* TSupport.swift */,
+				435271361E13974100EA8113 /* TString.swift */,
+				435271381E13976300EA8113 /* TData.swift */,
+				4352713A1E13979B00EA8113 /* TTableView.swift */,
+				4352713C1E1397D400EA8113 /* TImage.swift */,
+				4352713E1E1397FB00EA8113 /* TColor.swift */,
 			);
-			path = Classes;
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,11 +172,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				433C15A71E129C8200B5FB5F /* TSupport.swift in Sources */,
+				435271341E1396F000EA8113 /* TView.swift in Sources */,
+				435271311E1396F000EA8113 /* TExtensions.swift in Sources */,
+				4352713D1E1397D400EA8113 /* TImage.swift in Sources */,
+				435271351E1396F000EA8113 /* TViewController.swift in Sources */,
+				4352713B1E13979B00EA8113 /* TTableView.swift in Sources */,
 				433C15921E1297C800B5FB5F /* ViewController.swift in Sources */,
-				433C15A51E129C8200B5FB5F /* TExtensions.swift in Sources */,
+				435271391E13976300EA8113 /* TData.swift in Sources */,
+				4352711C1E1395F500EA8113 /* TSupport.swift in Sources */,
 				433C15901E1297C800B5FB5F /* AppDelegate.swift in Sources */,
-				433C15A61E129C8200B5FB5F /* TLocalisationStringExtension.swift in Sources */,
+				435271371E13974100EA8113 /* TString.swift in Sources */,
+				4352713F1E1397FB00EA8113 /* TColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

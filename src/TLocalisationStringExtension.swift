@@ -21,12 +21,3 @@ extension String {
     }
 }
 
-extension String {
-    static let tLocalTitleCatalog:String = "TCatalog".localise;
-    
-    static let tLocalTitleListShop:String = "TListShop".localise;
-    
-    static let tLocalTitleSearch:String = "TSearch".localise;
-    
-    static let tLocalTitleHelp:String = "THelp".localise;
-}
