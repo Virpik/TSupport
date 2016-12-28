@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UITableView{
+public extension UITableView{
     func register(atClass:AnyClass){
         let idendifier = self.cellIdendifier(atClass: atClass);
         let nib = UINib(nibName: "\(atClass)", bundle: nil);

@@ -8,9 +8,9 @@
 
 import UIKit
 
-extension UIView{
+public extension UIView{
     
-    @IBInspectable var tBColor:UIColor? {
+    @IBInspectable public var tBColor:UIColor? {
         get{
             return UIColor(cgColor: self.layer.borderColor!);
         }
@@ -20,7 +20,7 @@ extension UIView{
         }
     }
     
-    @IBInspectable var tBWidth:Float {
+    @IBInspectable public var tBWidth:Float {
         get{
             return self.layer.borderWidth.float;
         }
@@ -30,7 +30,7 @@ extension UIView{
         }
     }
     
-    @IBInspectable var tBRadius:Float {
+    @IBInspectable public var tBRadius:Float {
         get{
             return self.layer.bounds.height.float / self.layer.cornerRadius.float
         }
@@ -41,6 +41,6 @@ extension UIView{
     }
 }
 
-class TView: UIView {
+public class TView: UIView {
 
 }

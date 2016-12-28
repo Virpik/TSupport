@@ -10,19 +10,19 @@ import Foundation
 import UIKit
 
 extension CGFloat {
-    static func random() -> CGFloat {
+    public static func random() -> CGFloat {
         return CGFloat(arc4random()) / CGFloat(UInt32.max)
     }
 }
 
 extension Int {
-    var degreesToRadians: Double { return Double(self) * .pi / 180 }
-    var radiansToDegrees: Double { return Double(self) * 180 / .pi }
+    public var degreesToRadians: Double { return Double(self) * .pi / 180 }
+    public var radiansToDegrees: Double { return Double(self) * 180 / .pi }
 }
 
 extension FloatingPoint {
-    var degreesToRadians: Self { return self * .pi / 180 }
-    var radiansToDegrees: Self { return self * 180 / .pi }
+    public var degreesToRadians: Self { return self * .pi / 180 }
+    public var radiansToDegrees: Self { return self * 180 / .pi }
 }
 
 public extension String{
@@ -82,7 +82,7 @@ public extension NSNumber{
 
 
 extension Date {
-    struct Formatter {
+    public struct Formatter {
         static let iso1: DateFormatter = {
             let formatter = DateFormatter();
             formatter.dateFormat = "yyyy-MM-dd'T'HH-mm-ss";
@@ -97,21 +97,21 @@ extension Date {
         
     }
     
-    var iso1: String {
+    public var iso1: String {
         return Formatter.iso1.string(from: self)
     }
     
-    var iso2: String {
+    public var iso2: String {
         return Formatter.iso2.string(from: self)
     }
 }
 
 extension String {
-    var dateFromIso1: Date? {
+    public var dateFromIso1: Date? {
         return Date.Formatter.iso1.date(from: self)
     }
     
-    var dateFromIso2: Date? {
+    public var dateFromIso2: Date? {
         return Date.Formatter.iso2.date(from: self)
     }
     

@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Data{
+public extension Data{
     var json:[String:AnyObject]? {
         
         do{

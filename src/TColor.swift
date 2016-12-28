@@ -8,13 +8,13 @@
 
 import UIKit
 
-extension UIColor {
+public extension UIColor {
     static func random() -> UIColor {
         return UIColor(red:   .random(), green: .random(), blue:  .random(), alpha: 1.0)
     }
 }
 
-extension UIColor {
+public extension UIColor {
     
     convenience init(hex:String){
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()

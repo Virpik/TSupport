@@ -9,15 +9,15 @@
 
 import UIKit
 
-func async(_ block:@escaping ()->Void){
+public func async(_ block:@escaping ()->Void){
     DispatchQueue.global().async(execute: block);
 }
 
-func main(_ block:@escaping ()->Void){
+public  func main(_ block:@escaping ()->Void){
     DispatchQueue.main.async(execute: block);
 }
 
-func delay(_ delay: TimeInterval, _ block:@escaping ()->Void){
+public func delay(_ delay: TimeInterval, _ block:@escaping ()->Void){
     DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: block);
 }
 

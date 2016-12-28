@@ -29,6 +29,6 @@ public extension UIImage {
 }
 
 
-class TImage: UIImage {
+public class TImage: UIImage {
 
 }

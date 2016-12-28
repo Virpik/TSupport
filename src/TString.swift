@@ -8,14 +8,14 @@
 
 import Foundation
 
-extension String {
-    var localise:String {
+public extension String {
+    public var localise:String {
         get{
             return self.localise();
         }
     }
     
-    func localise(comment:String? = "")->String{
+    public func localise(comment:String? = "")->String{
         return  NSLocalizedString(self, comment: "");
     }
 }

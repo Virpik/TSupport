@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIViewController{
+public extension UIViewController{
     @IBInspectable var TClearBackButton:Bool{
         get { return true }
         set(value) {
@@ -22,13 +22,13 @@ extension UIViewController{
     }
 }
 
-class TViewController: UIViewController {
+public class TViewController: UIViewController {
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 }
