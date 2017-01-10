@@ -7,11 +7,11 @@
 //
 
 public class TTableViewSection:Any {
-    private(set) var identifier:String?;
+    public private(set) var identifier:String?;
     
     public var numberRows:Int = 0;
     
-    private(set) var rows:[TTableViewRowInterfase] = [];
+    public private(set) var rows:[TTableViewRowInterfase] = [];
     
     public var expanded:Bool = true;
     

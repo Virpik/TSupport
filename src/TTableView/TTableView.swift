@@ -36,8 +36,8 @@ public protocol TTableViewRowInterfase{
 public protocol TTableViewRowModel{}
 
 public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
-    private(set) var tableView:UITableView;
-    private(set) var sections:[TTableViewSection] = []
+    public private(set) var tableView:UITableView;
+    public private(set) var sections:[TTableViewSection] = []
     
     private var registersCell:[String:Bool] = [:];
     private var cachesHeightCell:[IndexPath:CGFloat] = [:];
