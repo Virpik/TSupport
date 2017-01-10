@@ -18,7 +18,7 @@ public class TTableViewRow<Model:TTableViewRowModel, Cell:UITableViewCell>:TTabl
     
     public var expanded:Bool = true;
     
-    init(model:Model?, identifier:String? = nil, expanded:Bool = true, builder:buildFunc? = nil){
+    public init(model:Model?, identifier:String? = nil, expanded:Bool = true, builder:buildFunc? = nil){
         self.expanded = expanded;
         self.identifier = identifier;
         self.model = model;

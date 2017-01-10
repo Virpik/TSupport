@@ -15,7 +15,7 @@ public class TTableViewSection:Any {
     
     public var expanded:Bool = true;
     
-    init(identifier:String? = nil, expanded:Bool = true, rows:TTableViewRowInterfase...) {
+    public init(identifier:String? = nil, expanded:Bool = true, rows:TTableViewRowInterfase...) {
         self.expanded = expanded;
         self.identifier = identifier;
         self.rows = rows;
@@ -23,7 +23,7 @@ public class TTableViewSection:Any {
     }
     
     
-    init(identifier:String? = nil, expanded:Bool = true, rows:[TTableViewRowInterfase]) {
+    public init(identifier:String? = nil, expanded:Bool = true, rows:[TTableViewRowInterfase]) {
         self.expanded = expanded;
         self.identifier = identifier;
         self.rows = rows;

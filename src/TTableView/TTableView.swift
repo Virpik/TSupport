@@ -9,17 +9,17 @@
 import UIKit
 
 public extension UITableView{
-    func register(atClass:AnyClass){
+    public func register(atClass:AnyClass){
         let idendifier = self.cellIdendifier(atClass: atClass);
         let nib = UINib(nibName: "\(atClass)", bundle: nil);
         self.register(nib, forCellReuseIdentifier: idendifier);
     }
     
-    func cell(atClass:AnyClass)->UITableViewCell?{
+    public func cell(atClass:AnyClass)->UITableViewCell?{
         return self.dequeueReusableCell(withIdentifier: self.cellIdendifier(atClass: atClass));
     }
     
-    func cellIdendifier(atClass:AnyClass) -> String {
+    public func cellIdendifier(atClass:AnyClass) -> String {
         return "\(atClass)";
     }
 }
@@ -44,7 +44,7 @@ public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
     
     public var delegate:UITableViewDelegate?;
     
-    init(tableView:UITableView) {
+    public init(tableView:UITableView) {
         self.tableView = tableView;
         
         super.init();
