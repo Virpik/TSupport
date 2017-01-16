@@ -57,10 +57,6 @@ public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
         }
         
         self.sections.insert(section, at: _index);
-        
-        section.rows.forEach { (row) in
-            self.checkRegistraionCell(cellClass: row.cellClass);
-        }
     }
     
     public func row(atIndexPath indexPath:IndexPath)->TTableViewRowInterface{
@@ -305,6 +301,8 @@ public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
         let section = self.sections[indexPath.section];
         
         let row = section.rows[indexPath.row];
+        
+        self.checkRegistraionCell(cellClass: row.cellClass);
         
         let cell = self.tableView.cell(atClass:row.cellClass)!;
         

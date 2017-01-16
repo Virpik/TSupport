@@ -51,7 +51,7 @@ public class TTableViewRow<Model:TTableViewRowModel>:TTableViewRowInterface{
         self.model = model
         self.cellClass = Model.TypeCell().classForCoder;
         self.builder = builder
-        self.removable = true
+        self.removable = removable
         self.didSelectAction = didSelectAction;
         self.deleteAction = deleteAction;
     }

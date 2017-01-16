@@ -29,6 +29,7 @@ class TTableExampleViewController: UIViewController {
         self.tTableView.setupAutomaticDimension()
         
         let row = TTableViewRow(model: TTitle(title: "BEGIN", segueIdendifier:nil))
+        row.removable = false
         
         let defaultSection = TTableViewSection(rows:row)
         self.tTableView.append(section: defaultSection)
@@ -43,12 +44,13 @@ class TTableExampleViewController: UIViewController {
         let date = TDateModel(date:Date())
         self.dates.append(date)
         
-//        if let section = self.tTableView.sections.last{
-//            let row = TTableViewRow(model:date, builder: self.builderItemCell)
-//            section.append(row: row)
-//        }
+        let row = TTableViewRow(model: date,  builder: self.builderItemCell)
+        row.removable = true
         
-//        self.tableView.reloadData()
+        let indexPath = IndexPath(row:0, section:0)
+        
+        self.tTableView.insertRows(rows: (row:row, indexPath: indexPath))
+        
     }
 
     private func didSelectMenuItemCell(_ item: TDateModel?, _ cell: TDateItemCell, _ indexPath: IndexPath){
