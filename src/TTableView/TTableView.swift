@@ -25,6 +25,8 @@ public extension UITableView{
 }
 
 public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
+    public typealias TRowItem = (row:TTableViewRowInterface, indexPath:IndexPath)
+    
     private private(set) var tableView:UITableView;
     private private(set) var sections:[TTableViewSection] = []
     
@@ -65,7 +67,28 @@ public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
         return self.sections[indexPath.section].rows[indexPath.row]
     }
     
-    private func deleteRow(atIndexPath indexPath: IndexPath){
+    
+    public func insertRows(animation:UITableViewRowAnimation = .top, rows:TRowItem...){
+        self.insertRows(rows: rows)
+    }
+    
+    public func insertRows(animation:UITableViewRowAnimation = .top, rows:[TRowItem]){
+        
+        let indexPaths = rows.map { (rowItem) -> IndexPath in
+            return rowItem.indexPath
+        }
+        
+        rows.forEach { (item) in
+            let section = self.sections[item.indexPath.section]
+            section.insert(row: item.row, index:item.indexPath.row)
+        }
+        
+        self.tableView.beginUpdates()
+        self.tableView.insertRows(at: indexPaths, with: animation)
+        self.tableView.endUpdates()
+    }
+    
+    public func deleteRow(atIndexPath indexPath: IndexPath){
         let row = self.row(atIndexPath: indexPath)
         
         if (!row.removable) { return }
