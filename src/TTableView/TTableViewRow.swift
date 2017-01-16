@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol TTableViewRowInterfase{
+public protocol TTableViewRowInterface:TUpdateInterface{
     var identifier:String {get};
     var cellClass:AnyClass {get};
     var expanded:Bool {get set};
@@ -21,7 +21,7 @@ public protocol TTableViewRowInterfase{
     func delete(cell:UITableViewCell, indexPath:IndexPath)
 }
 
-public class TTableViewRow<Model:TTableViewRowModel>:TTableViewRowInterfase{
+public class TTableViewRow<Model:TTableViewRowModel>:TTableViewRowInterface{
     public typealias tTableViewRowFunc = ((_ item:Model?, _ cell:Model.TypeCell, _ indexPath:IndexPath)->Void)
     
     private(set) public var identifier:String;
@@ -54,6 +54,20 @@ public class TTableViewRow<Model:TTableViewRowModel>:TTableViewRowInterfase{
         self.removable = true
         self.didSelectAction = didSelectAction;
         self.deleteAction = deleteAction;
+    }
+    
+    public var isNeedUpdate: Bool {
+        if let model = self.model{
+            return model.isNeedUpdate;
+        }
+        
+        return false
+    }
+    
+    public func updated() {
+        if let model = self.model{
+            return model.updated();
+        }
     }
     
     public func build(cell:UITableViewCell, indexPath:IndexPath){

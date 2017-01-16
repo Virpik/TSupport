@@ -24,10 +24,6 @@ public extension UITableView{
     }
 }
 
-public protocol TTableViewRowModel{
-    associatedtype TypeCell:UITableViewCell;
-}
-
 public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
     private private(set) var tableView:UITableView;
     private private(set) var sections:[TTableViewSection] = []
@@ -50,6 +46,52 @@ public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.estimatedRowHeight = 10;
     }
+   
+    public func append(section:TTableViewSection, index:Int? = nil){
+        var _index = self.sections.count;
+        
+        if let tIndex = index{
+            _index = tIndex
+        }
+        
+        self.sections.insert(section, at: _index);
+        
+        section.rows.forEach { (row) in
+            self.checkRegistraionCell(cellClass: row.cellClass);
+        }
+    }
+    
+    public func row(atIndexPath indexPath:IndexPath)->TTableViewRowInterface{
+        return self.sections[indexPath.section].rows[indexPath.row]
+    }
+    
+    private func deleteRow(atIndexPath indexPath: IndexPath){
+        let row = self.row(atIndexPath: indexPath)
+        
+        if (!row.removable) { return }
+        
+        guard let cell = self.tableView.cellForRow(at: indexPath) else { return }
+        
+        row.delete(cell: cell, indexPath: indexPath)
+        
+        self.sections[indexPath.section].delete(rowAtIndex: indexPath.row)
+        
+        self.tableView.beginUpdates()
+        self.tableView.deleteRows(at: [indexPath], with: .left)
+        self.tableView.endUpdates()
+    }
+    
+    private func indexsToPath(section:Int, indexs:[Int])->[IndexPath]{
+        var result:[IndexPath] = [];
+        
+        indexs.forEach { (index) in
+            let indexPath = IndexPath(row: index, section: section);
+            result.append(indexPath);
+        }
+        
+        return result;
+    }
+    
     
     public func expand(atSection:Int, rows: Int...){
         self.expand(atSection:atSection, rows:rows);
@@ -83,51 +125,6 @@ public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
         self.tableView.beginUpdates();
         self.tableView.deleteRows(at: indexPaths, with: .top);
         self.tableView.endUpdates();
-    }
-    
-    public func append(section:TTableViewSection, index:Int? = nil){
-        var _index = self.sections.count;
-        
-        if let tIndex = index{
-            _index = tIndex
-        }
-        
-        self.sections.insert(section, at: _index);
-        
-        section.rows.forEach { (row) in
-            self.checkRegistraionCell(cellClass: row.cellClass);
-        }
-    }
-    
-    public func row(atIndexPath indexPath:IndexPath)->TTableViewRowInterfase{
-        return self.sections[indexPath.section].rows[indexPath.row]
-    }
-    
-    private func deleteRow(atIndexPath indexPath: IndexPath){
-        let row = self.row(atIndexPath: indexPath)
-        
-        if (!row.removable) { return }
-        
-        guard let cell = self.tableView.cellForRow(at: indexPath) else { return }
-        
-        row.delete(cell: cell, indexPath: indexPath)
-        
-        self.sections[indexPath.section].delete(rowAtIndex: indexPath.row)
-        
-        self.tableView.beginUpdates()
-        self.tableView.deleteRows(at: [indexPath], with: .left)
-        self.tableView.endUpdates()
-    }
-    
-    private func indexsToPath(section:Int, indexs:[Int])->[IndexPath]{
-        var result:[IndexPath] = [];
-        
-        indexs.forEach { (index) in
-            let indexPath = IndexPath(row: index, section: section);
-            result.append(indexPath);
-        }
-        
-        return result;
     }
     
     private func checkRegistraionCell(cellClass:AnyClass){

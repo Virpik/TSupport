@@ -10,6 +10,7 @@ import UIKit
 
 struct TDateModel:TTableViewRowModel {
     typealias TypeCell = TDateItemCell
+    
     let date:Date;
 }
 

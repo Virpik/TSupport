@@ -11,18 +11,18 @@ public class TTableViewSection:Any {
     
     public var numberRows:Int = 0;
     
-    public private(set) var rows:[TTableViewRowInterfase] = [];
+    public private(set) var rows:[TTableViewRowInterface] = [];
     
     public var expanded:Bool = true;
     
-    public init(identifier:String? = nil, expanded:Bool = true, rows:TTableViewRowInterfase...) {
+    public init(identifier:String? = nil, expanded:Bool = true, rows:TTableViewRowInterface...) {
         self.expanded = expanded;
         self.identifier = identifier;
         self.rows = rows;
         self.calcExpandedRows();
     }
     
-    public init(identifier:String? = nil, expanded:Bool = true, rows:[TTableViewRowInterfase]) {
+    public init(identifier:String? = nil, expanded:Bool = true, rows:[TTableViewRowInterface]) {
         self.expanded = expanded;
         self.identifier = identifier;
         self.rows = rows;
@@ -30,25 +30,25 @@ public class TTableViewSection:Any {
     }
     
     
-    public func append(row:TTableViewRowInterfase){
+    public func append(row:TTableViewRowInterface){
         self.append(rows: [row])
     }
     
-    public func append(rows:[TTableViewRowInterfase]){
+    public func append(rows:[TTableViewRowInterface]){
         self.rows.append(contentsOf: rows)
         self.calcExpandedRows()
     }
     
-    public func insert(row:TTableViewRowInterfase, index:Int){
+    public func insert(row:TTableViewRowInterface, index:Int){
         self.insert(rows: [row], index: index)
     }
     
-    public func insert(rows:[TTableViewRowInterfase], index:Int){
+    public func insert(rows:[TTableViewRowInterface], index:Int){
         self.rows.insert(contentsOf: rows, at: index)
         self.calcExpandedRows()
     }
     
-    public func delete(row:TTableViewRowInterfase){
+    public func delete(row:TTableViewRowInterface){
         for (index, tRow) in self.rows.enumerated() {
             if (tRow.identifier == row.identifier){
                 self.delete(rowAtIndex: index);
@@ -57,7 +57,7 @@ public class TTableViewSection:Any {
         }
     }
     
-    public func delete(rows:[TTableViewRowInterfase]){
+    public func delete(rows:[TTableViewRowInterface]){
         rows.forEach { (row) in
             self.delete(row: row)
         }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4313945C1E2CB95800390EAA /* TDateItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4313945A1E2CB95800390EAA /* TDateItemCell.swift */; };
 		4313945D1E2CB95800390EAA /* TDateItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4313945B1E2CB95800390EAA /* TDateItemCell.xib */; };
+		4313945F1E2CF93200390EAA /* TUpdateInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4313945E1E2CF93200390EAA /* TUpdateInterface.swift */; };
+		431394611E2CF95E00390EAA /* TTableViewRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431394601E2CF95E00390EAA /* TTableViewRowModel.swift */; };
 		433C15901E1297C800B5FB5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433C158F1E1297C800B5FB5F /* AppDelegate.swift */; };
 		433C15951E1297C800B5FB5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 433C15931E1297C800B5FB5F /* Main.storyboard */; };
 		433C15971E1297C800B5FB5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 433C15961E1297C800B5FB5F /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 /* Begin PBXFileReference section */
 		4313945A1E2CB95800390EAA /* TDateItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDateItemCell.swift; sourceTree = "<group>"; };
 		4313945B1E2CB95800390EAA /* TDateItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TDateItemCell.xib; sourceTree = "<group>"; };
+		4313945E1E2CF93200390EAA /* TUpdateInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUpdateInterface.swift; sourceTree = "<group>"; };
+		431394601E2CF95E00390EAA /* TTableViewRowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTableViewRowModel.swift; sourceTree = "<group>"; };
 		433C158C1E1297C800B5FB5F /* TSuppot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSuppot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		433C158F1E1297C800B5FB5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		433C15941E1297C800B5FB5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -131,6 +135,8 @@
 				43899A551E247772007F6CF1 /* TTableView.swift */,
 				43899A561E247772007F6CF1 /* TTableViewRow.swift */,
 				43899A571E247772007F6CF1 /* TTableViewSection.swift */,
+				4313945E1E2CF93200390EAA /* TUpdateInterface.swift */,
+				431394601E2CF95E00390EAA /* TTableViewRowModel.swift */,
 			);
 			path = TTableView;
 			sourceTree = "<group>";
@@ -248,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				435271341E1396F000EA8113 /* TView.swift in Sources */,
+				431394611E2CF95E00390EAA /* TTableViewRowModel.swift in Sources */,
 				435271311E1396F000EA8113 /* TExtensions.swift in Sources */,
 				4352713D1E1397D400EA8113 /* TImage.swift in Sources */,
 				435271351E1396F000EA8113 /* TViewController.swift in Sources */,
@@ -256,6 +263,7 @@
 				435271391E13976300EA8113 /* TData.swift in Sources */,
 				4352711C1E1395F500EA8113 /* TSupport.swift in Sources */,
 				43B293DF1E2C9DA400969249 /* TMenuItemCell.swift in Sources */,
+				4313945F1E2CF93200390EAA /* TUpdateInterface.swift in Sources */,
 				43B293E51E2CB31000969249 /* TTableExampleViewController.swift in Sources */,
 				43899A591E247772007F6CF1 /* TTableViewRow.swift in Sources */,
 				433C15901E1297C800B5FB5F /* AppDelegate.swift in Sources */,
