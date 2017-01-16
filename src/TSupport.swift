@@ -24,3 +24,29 @@ public func delay(_ delay: TimeInterval, _ block:@escaping ()->Void){
 class TSupport: AnyObject {
     
 }
+
+
+public class TLabel:UILabel{
+    
+    override public func draw(_ rect: CGRect) {
+        let insets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
+        super.draw(UIEdgeInsetsInsetRect(rect, insets))
+    }
+    
+    override public func drawText(in rect: CGRect) {
+        let insets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
+        super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
+    }
+}
+
+public extension UIView {
+    @IBInspectable public var tBRadius_global:Float {
+        get{
+            return self.layer.cornerRadius.float
+        }
+        
+        set(value){
+            self.layer.cornerRadius = value.cgFloat;
+        }
+    }
+}

@@ -25,15 +25,7 @@ public extension UITableView{
 }
 
 
-public protocol TTableViewRowInterfase{
-    var identifier:String? {get};
-    var cellClass:AnyClass {get};
-    var expanded:Bool {get set};
-    
-    func build(cell:UITableViewCell, indexPath:IndexPath)
-}
-
-public protocol TTableViewRowModel{}
+public protocol TTableViewRowModel{ }
 
 public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
     public private(set) var tableView:UITableView;
@@ -55,7 +47,7 @@ public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
     
     public func setupAutomaticDimension(){
         self.tableView.rowHeight = UITableViewAutomaticDimension;
-        self.tableView.estimatedRowHeight = 150;
+        self.tableView.estimatedRowHeight = 10;
     }
     
     public func expand(atSection:Int, rows: Int...){
@@ -106,6 +98,26 @@ public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
         }
     }
     
+    public func row(atIndexPath indexPath:IndexPath)->TTableViewRowInterfase{
+        return self.sections[indexPath.section].rows[indexPath.row]
+    }
+    
+    private func deleteRow(atIndexPath indexPath: IndexPath){
+        let row = self.row(atIndexPath: indexPath)
+        
+        if (!row.removable) { return }
+        
+        guard let cell = self.tableView.cellForRow(at: indexPath) else { return }
+        
+        row.delete(cell: cell, indexPath: indexPath)
+        
+        self.sections[indexPath.section].delete(rowAtIndex: indexPath.row)
+        
+        self.tableView.beginUpdates()
+        self.tableView.deleteRows(at: [indexPath], with: .left)
+        self.tableView.endUpdates()
+    }
+    
     private func indexsToPath(section:Int, indexs:[Int])->[IndexPath]{
         var result:[IndexPath] = [];
         
@@ -128,6 +140,21 @@ public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
     }
     
     // MARK table View delegate
+    
+    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
+        let row = self.row(atIndexPath: indexPath)
+
+        return row.removable
+    }
+    
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            self.deleteRow(atIndexPath: indexPath)
+        }
+    }
+    
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         self.delegate?.tableView?(tableView, willDisplay: cell, forRowAt: indexPath)
         self.cachesHeightCell[indexPath] = cell.frame.height;
@@ -203,10 +230,34 @@ public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.delegate?.tableView?(tableView, didSelectRowAt: indexPath);
+        
+//        print("---- begin did select ----")
+        
+        if tableView != self.tableView { return }
+        
+        let section = self.sections[indexPath.section];
+        
+        let row = section.rows[indexPath.row];
+        
+        let cell = self.tableView.cellForRow(at: indexPath)!;
+        
+        row.didSelect(cell: cell, indexPath:indexPath);
+        
+//        print("---- end did select ----")
     }
     
     public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         self.delegate?.tableView?(tableView, didDeselectRowAt: indexPath);
+        
+        if tableView != self.tableView { return }
+        
+        let section = self.sections[indexPath.section];
+        
+        let row = section.rows[indexPath.row];
+        
+        if let cell = self.tableView.cellForRow(at: indexPath){
+            row.didDeselect(cell: cell, indexPath:indexPath);
+        }
     }
 
     

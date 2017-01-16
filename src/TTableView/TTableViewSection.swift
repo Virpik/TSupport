@@ -22,7 +22,6 @@ public class TTableViewSection:Any {
         self.calcExpandedRows();
     }
     
-    
     public init(identifier:String? = nil, expanded:Bool = true, rows:[TTableViewRowInterfase]) {
         self.expanded = expanded;
         self.identifier = identifier;
@@ -30,6 +29,51 @@ public class TTableViewSection:Any {
         self.calcExpandedRows();
     }
     
+    
+    public func append(row:TTableViewRowInterfase){
+        self.append(rows: [row])
+    }
+    
+    public func append(rows:[TTableViewRowInterfase]){
+        self.rows.append(contentsOf: rows)
+        self.calcExpandedRows()
+    }
+    
+    public func insert(row:TTableViewRowInterfase, index:Int){
+        self.insert(rows: [row], index: index)
+    }
+    
+    public func insert(rows:[TTableViewRowInterfase], index:Int){
+        self.rows.insert(contentsOf: rows, at: index)
+        self.calcExpandedRows()
+    }
+    
+    public func delete(row:TTableViewRowInterfase){
+        for (index, tRow) in self.rows.enumerated() {
+            if (tRow.identifier == row.identifier){
+                self.delete(rowAtIndex: index);
+                break
+            }
+        }
+    }
+    
+    public func delete(rows:[TTableViewRowInterfase]){
+        rows.forEach { (row) in
+            self.delete(row: row)
+        }
+    }
+    
+    public func delete(rowAtIndex:Int){
+        self.rows.remove(at: rowAtIndex)
+        self.calcExpandedRows()
+    }
+    
+    public func delete(rowsAtIndexs:[Int]){
+        rowsAtIndexs.forEach { (index) in
+            self.rows.remove(at: index)
+            self.calcExpandedRows()
+        }
+    }
     
     public func expandRows(_ indexs:Int...) -> [Int]{
         return self.expandRows(indexs);
