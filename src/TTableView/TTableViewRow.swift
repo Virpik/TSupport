@@ -21,8 +21,8 @@ public protocol TTableViewRowInterfase{
     func delete(cell:UITableViewCell, indexPath:IndexPath)
 }
 
-public class TTableViewRow<Model:TTableViewRowModel, Cell:UITableViewCell>:TTableViewRowInterfase{
-    public typealias tTableViewRowFunc = ((_ item:Model?, _ cell:Cell, _ indexPath:IndexPath)->Void)
+public class TTableViewRow<Model:TTableViewRowModel>:TTableViewRowInterfase{
+    public typealias tTableViewRowFunc = ((_ item:Model?, _ cell:Model.TypeCell, _ indexPath:IndexPath)->Void)
     
     private(set) public var identifier:String;
     private(set) public var cellClass:AnyClass;
@@ -49,7 +49,7 @@ public class TTableViewRow<Model:TTableViewRowModel, Cell:UITableViewCell>:TTabl
         }
         
         self.model = model
-        self.cellClass = Cell.classForCoder()
+        self.cellClass = Model.TypeCell().classForCoder;
         self.builder = builder
         self.removable = true
         self.didSelectAction = didSelectAction;
@@ -57,43 +57,33 @@ public class TTableViewRow<Model:TTableViewRowModel, Cell:UITableViewCell>:TTabl
     }
     
     public func build(cell:UITableViewCell, indexPath:IndexPath){
-        if let _cell = cell as? Cell{
-//            main {
-                self.builder?(self.model, _cell, indexPath);
-//            }
+        if let _cell = cell as? Model.TypeCell{
+            self.builder?(self.model, _cell, indexPath);
         }
     }
     
     public func didSelect(cell:UITableViewCell, indexPath:IndexPath){
-        if let _cell = cell as? Cell{
-//            main {
-                self.didSelectAction?(self.model, _cell, indexPath);
-//            }
+        if let _cell = cell as? Model.TypeCell{
+            self.didSelectAction?(self.model, _cell, indexPath);
         }
     }
     
     public func didDeselect(cell:UITableViewCell, indexPath:IndexPath){
-        if let _cell = cell as? Cell{
-//            main {
-                self.didDeselectAction?(self.model, _cell, indexPath);
-//            }
+        if let _cell = cell as? Model.TypeCell{
+            self.didDeselectAction?(self.model, _cell, indexPath);
         }
     }
 
     
     public func willSelect(cell:UITableViewCell, indexPath:IndexPath){
-        if let _cell = cell as? Cell{
-//            main {
-                self.willSelectAction?(self.model, _cell, indexPath);
-//            }
+        if let _cell = cell as? Model.TypeCell{
+            self.willSelectAction?(self.model, _cell, indexPath);
         }
     }
     
     public func delete(cell:UITableViewCell, indexPath:IndexPath){
-        if let _cell = cell as? Cell{
-//            main {
-                self.deleteAction?(self.model, _cell, indexPath);
-//            }
+        if let _cell = cell as? Model.TypeCell{
+            self.deleteAction?(self.model, _cell, indexPath);
         }
     }
 }

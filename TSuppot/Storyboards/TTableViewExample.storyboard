@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--TTableView-->
         <scene sceneID="cwq-ni-IFS">
             <objects>
-                <viewController id="BKJ-bf-qcP" sceneMemberID="viewController">
+                <viewController id="BKJ-bf-qcP" customClass="TTableExampleViewController" customModule="TSuppot" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8lu-TO-W0g"/>
                         <viewControllerLayoutGuide type="bottom" id="hLq-0w-HFz"/>
@@ -20,9 +20,30 @@
                     <view key="view" contentMode="scaleToFill" id="RWb-T6-DWY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ox0-rG-TcQ">
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ox0-rG-TcQ" firstAttribute="top" secondItem="8lu-TO-W0g" secondAttribute="bottom" id="Bg8-8l-XcP"/>
+                            <constraint firstAttribute="trailing" secondItem="ox0-rG-TcQ" secondAttribute="trailing" id="X3Y-oD-VHH"/>
+                            <constraint firstItem="hLq-0w-HFz" firstAttribute="top" secondItem="ox0-rG-TcQ" secondAttribute="bottom" id="dtx-Uh-sRk"/>
+                            <constraint firstItem="ox0-rG-TcQ" firstAttribute="leading" secondItem="RWb-T6-DWY" secondAttribute="leading" id="zZx-BM-alJ"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Mvg-G7-OCb"/>
+                    <navigationItem key="navigationItem" title="TTableView" id="Mvg-G7-OCb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="jxa-NZ-CcQ">
+                            <connections>
+                                <action selector="addActionWithSender:" destination="BKJ-bf-qcP" id="RCw-vJ-5KD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="ox0-rG-TcQ" id="o7b-0N-nJz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cN8-Ex-IuE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

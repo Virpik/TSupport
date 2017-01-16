@@ -24,17 +24,18 @@ public extension UITableView{
     }
 }
 
-
-public protocol TTableViewRowModel{ }
+public protocol TTableViewRowModel{
+    associatedtype TypeCell:UITableViewCell;
+}
 
 public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
-    public private(set) var tableView:UITableView;
-    public private(set) var sections:[TTableViewSection] = []
+    private private(set) var tableView:UITableView;
+    private private(set) var sections:[TTableViewSection] = []
     
     private var registersCell:[String:Bool] = [:];
     private var cachesHeightCell:[IndexPath:CGFloat] = [:];
     
-    public var delegate:UITableViewDelegate?;
+    private var delegate:UITableViewDelegate?;
     
     public init(tableView:UITableView) {
         self.tableView = tableView;
