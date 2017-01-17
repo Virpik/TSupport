@@ -28,11 +28,13 @@ class TTableExampleViewController: UIViewController {
         self.tTableView = TTableView(tableView: self.tableView)
         self.tTableView.setupAutomaticDimension()
         
-        let row = TTableViewRow(model: TTitle(title: "BEGIN", segueIdendifier:nil))
-        row.removable = false
+        self.tTableView.append(section: TTableViewSection(rows:[]))
         
-        let defaultSection = TTableViewSection(rows:row)
-        self.tTableView.append(section: defaultSection)
+        self.addAction(sender: self)
+        
+        let rowAction = UITableViewRowAction(style: .normal, title: "") { (item, indexPath) in
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
