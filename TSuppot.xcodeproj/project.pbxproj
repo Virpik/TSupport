@@ -7,21 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		430F59D31E387A1900D185FA /* TColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F59C41E387A1900D185FA /* TColor.swift */; };
+		430F59D41E387A1900D185FA /* TData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F59C51E387A1900D185FA /* TData.swift */; };
+		430F59D51E387A1900D185FA /* TExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F59C61E387A1900D185FA /* TExtensions.swift */; };
+		430F59D61E387A1900D185FA /* TImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F59C71E387A1900D185FA /* TImage.swift */; };
+		430F59D71E387A1900D185FA /* TMailto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F59C81E387A1900D185FA /* TMailto.swift */; };
+		430F59D81E387A1900D185FA /* TString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F59C91E387A1900D185FA /* TString.swift */; };
+		430F59D91E387A1900D185FA /* TSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F59CA1E387A1900D185FA /* TSupport.swift */; };
+		430F59DA1E387A1900D185FA /* TTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F59CC1E387A1900D185FA /* TTableView.swift */; };
+		430F59DB1E387A1900D185FA /* TTableViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F59CD1E387A1900D185FA /* TTableViewRow.swift */; };
+		430F59DC1E387A1900D185FA /* TTableViewRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F59CE1E387A1900D185FA /* TTableViewRowModel.swift */; };
+		430F59DD1E387A1900D185FA /* TTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F59CF1E387A1900D185FA /* TTableViewSection.swift */; };
+		430F59DE1E387A1900D185FA /* TUpdateInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F59D01E387A1900D185FA /* TUpdateInterface.swift */; };
+		430F59DF1E387A1900D185FA /* TView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F59D11E387A1900D185FA /* TView.swift */; };
+		430F59E01E387A1900D185FA /* TViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F59D21E387A1900D185FA /* TViewController.swift */; };
 		433C15901E1297C800B5FB5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433C158F1E1297C800B5FB5F /* AppDelegate.swift */; };
 		433C15951E1297C800B5FB5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 433C15931E1297C800B5FB5F /* Main.storyboard */; };
 		433C15971E1297C800B5FB5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 433C15961E1297C800B5FB5F /* Assets.xcassets */; };
 		433C159A1E1297C800B5FB5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 433C15981E1297C800B5FB5F /* LaunchScreen.storyboard */; };
-		4352711C1E1395F500EA8113 /* TSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435271191E1395F500EA8113 /* TSupport.swift */; };
-		435271311E1396F000EA8113 /* TExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352712C1E1396F000EA8113 /* TExtensions.swift */; };
-		435271341E1396F000EA8113 /* TView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352712F1E1396F000EA8113 /* TView.swift */; };
-		435271351E1396F000EA8113 /* TViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435271301E1396F000EA8113 /* TViewController.swift */; };
-		435271371E13974100EA8113 /* TString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435271361E13974100EA8113 /* TString.swift */; };
-		435271391E13976300EA8113 /* TData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435271381E13976300EA8113 /* TData.swift */; };
-		4352713D1E1397D400EA8113 /* TImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352713C1E1397D400EA8113 /* TImage.swift */; };
-		4352713F1E1397FB00EA8113 /* TColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352713E1E1397FB00EA8113 /* TColor.swift */; };
-		43899A581E247772007F6CF1 /* TTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43899A551E247772007F6CF1 /* TTableView.swift */; };
-		43899A591E247772007F6CF1 /* TTableViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43899A561E247772007F6CF1 /* TTableViewRow.swift */; };
-		43899A5A1E247772007F6CF1 /* TTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43899A571E247772007F6CF1 /* TTableViewSection.swift */; };
 		43B293DC1E2C9D8D00969249 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B293D91E2C9D8D00969249 /* ViewController.swift */; };
 		43B293DF1E2C9DA400969249 /* TMenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B293DD1E2C9DA400969249 /* TMenuItemCell.swift */; };
 		43B293E01E2C9DA400969249 /* TMenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B293DE1E2C9DA400969249 /* TMenuItemCell.xib */; };
@@ -29,23 +32,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		430F59C41E387A1900D185FA /* TColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TColor.swift; sourceTree = "<group>"; };
+		430F59C51E387A1900D185FA /* TData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TData.swift; sourceTree = "<group>"; };
+		430F59C61E387A1900D185FA /* TExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TExtensions.swift; sourceTree = "<group>"; };
+		430F59C71E387A1900D185FA /* TImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TImage.swift; sourceTree = "<group>"; };
+		430F59C81E387A1900D185FA /* TMailto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMailto.swift; sourceTree = "<group>"; };
+		430F59C91E387A1900D185FA /* TString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TString.swift; sourceTree = "<group>"; };
+		430F59CA1E387A1900D185FA /* TSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSupport.swift; sourceTree = "<group>"; };
+		430F59CC1E387A1900D185FA /* TTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTableView.swift; sourceTree = "<group>"; };
+		430F59CD1E387A1900D185FA /* TTableViewRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTableViewRow.swift; sourceTree = "<group>"; };
+		430F59CE1E387A1900D185FA /* TTableViewRowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTableViewRowModel.swift; sourceTree = "<group>"; };
+		430F59CF1E387A1900D185FA /* TTableViewSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTableViewSection.swift; sourceTree = "<group>"; };
+		430F59D01E387A1900D185FA /* TUpdateInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUpdateInterface.swift; sourceTree = "<group>"; };
+		430F59D11E387A1900D185FA /* TView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TView.swift; sourceTree = "<group>"; };
+		430F59D21E387A1900D185FA /* TViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TViewController.swift; sourceTree = "<group>"; };
 		433C158C1E1297C800B5FB5F /* TSuppot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSuppot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		433C158F1E1297C800B5FB5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		433C15941E1297C800B5FB5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		433C15961E1297C800B5FB5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		433C15991E1297C800B5FB5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		433C159B1E1297C800B5FB5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		435271191E1395F500EA8113 /* TSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSupport.swift; sourceTree = "<group>"; };
-		4352712C1E1396F000EA8113 /* TExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TExtensions.swift; sourceTree = "<group>"; };
-		4352712F1E1396F000EA8113 /* TView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TView.swift; sourceTree = "<group>"; };
-		435271301E1396F000EA8113 /* TViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TViewController.swift; sourceTree = "<group>"; };
-		435271361E13974100EA8113 /* TString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TString.swift; sourceTree = "<group>"; };
-		435271381E13976300EA8113 /* TData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TData.swift; sourceTree = "<group>"; };
-		4352713C1E1397D400EA8113 /* TImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TImage.swift; sourceTree = "<group>"; };
-		4352713E1E1397FB00EA8113 /* TColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TColor.swift; sourceTree = "<group>"; };
-		43899A551E247772007F6CF1 /* TTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTableView.swift; sourceTree = "<group>"; };
-		43899A561E247772007F6CF1 /* TTableViewRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTableViewRow.swift; sourceTree = "<group>"; };
-		43899A571E247772007F6CF1 /* TTableViewSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTableViewSection.swift; sourceTree = "<group>"; };
 		43B293D91E2C9D8D00969249 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		43B293DD1E2C9DA400969249 /* TMenuItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMenuItemCell.swift; sourceTree = "<group>"; };
 		43B293DE1E2C9DA400969249 /* TMenuItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMenuItemCell.xib; sourceTree = "<group>"; };
@@ -63,6 +69,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		430F59CB1E387A1900D185FA /* TTableView */ = {
+			isa = PBXGroup;
+			children = (
+				430F59CC1E387A1900D185FA /* TTableView.swift */,
+				430F59CD1E387A1900D185FA /* TTableViewRow.swift */,
+				430F59CE1E387A1900D185FA /* TTableViewRowModel.swift */,
+				430F59CF1E387A1900D185FA /* TTableViewSection.swift */,
+				430F59D01E387A1900D185FA /* TUpdateInterface.swift */,
+			);
+			path = TTableView;
+			sourceTree = "<group>";
+		};
 		433C15831E1297C800B5FB5F = {
 			isa = PBXGroup;
 			children = (
@@ -97,27 +115,18 @@
 		435271161E1395F500EA8113 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				43899A541E247772007F6CF1 /* TTableView */,
-				4352712C1E1396F000EA8113 /* TExtensions.swift */,
-				4352712F1E1396F000EA8113 /* TView.swift */,
-				435271301E1396F000EA8113 /* TViewController.swift */,
-				435271191E1395F500EA8113 /* TSupport.swift */,
-				435271361E13974100EA8113 /* TString.swift */,
-				435271381E13976300EA8113 /* TData.swift */,
-				4352713C1E1397D400EA8113 /* TImage.swift */,
-				4352713E1E1397FB00EA8113 /* TColor.swift */,
+				430F59C41E387A1900D185FA /* TColor.swift */,
+				430F59C51E387A1900D185FA /* TData.swift */,
+				430F59C61E387A1900D185FA /* TExtensions.swift */,
+				430F59C71E387A1900D185FA /* TImage.swift */,
+				430F59C81E387A1900D185FA /* TMailto.swift */,
+				430F59C91E387A1900D185FA /* TString.swift */,
+				430F59CA1E387A1900D185FA /* TSupport.swift */,
+				430F59CB1E387A1900D185FA /* TTableView */,
+				430F59D11E387A1900D185FA /* TView.swift */,
+				430F59D21E387A1900D185FA /* TViewController.swift */,
 			);
 			path = src;
-			sourceTree = "<group>";
-		};
-		43899A541E247772007F6CF1 /* TTableView */ = {
-			isa = PBXGroup;
-			children = (
-				43899A551E247772007F6CF1 /* TTableView.swift */,
-				43899A561E247772007F6CF1 /* TTableViewRow.swift */,
-				43899A571E247772007F6CF1 /* TTableViewSection.swift */,
-			);
-			path = TTableView;
 			sourceTree = "<group>";
 		};
 		43B293D81E2C9D8D00969249 /* ViewControllers */ = {
@@ -229,20 +238,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				435271341E1396F000EA8113 /* TView.swift in Sources */,
-				435271311E1396F000EA8113 /* TExtensions.swift in Sources */,
-				4352713D1E1397D400EA8113 /* TImage.swift in Sources */,
-				435271351E1396F000EA8113 /* TViewController.swift in Sources */,
+				430F59D91E387A1900D185FA /* TSupport.swift in Sources */,
+				430F59DB1E387A1900D185FA /* TTableViewRow.swift in Sources */,
+				430F59E01E387A1900D185FA /* TViewController.swift in Sources */,
+				430F59D61E387A1900D185FA /* TImage.swift in Sources */,
+				430F59D41E387A1900D185FA /* TData.swift in Sources */,
+				430F59D71E387A1900D185FA /* TMailto.swift in Sources */,
+				430F59DF1E387A1900D185FA /* TView.swift in Sources */,
 				43B293DC1E2C9D8D00969249 /* ViewController.swift in Sources */,
-				43899A581E247772007F6CF1 /* TTableView.swift in Sources */,
-				435271391E13976300EA8113 /* TData.swift in Sources */,
-				4352711C1E1395F500EA8113 /* TSupport.swift in Sources */,
 				43B293DF1E2C9DA400969249 /* TMenuItemCell.swift in Sources */,
-				43899A591E247772007F6CF1 /* TTableViewRow.swift in Sources */,
+				430F59D31E387A1900D185FA /* TColor.swift in Sources */,
+				430F59D51E387A1900D185FA /* TExtensions.swift in Sources */,
+				430F59D81E387A1900D185FA /* TString.swift in Sources */,
 				433C15901E1297C800B5FB5F /* AppDelegate.swift in Sources */,
-				435271371E13974100EA8113 /* TString.swift in Sources */,
-				43899A5A1E247772007F6CF1 /* TTableViewSection.swift in Sources */,
-				4352713F1E1397FB00EA8113 /* TColor.swift in Sources */,
+				430F59DA1E387A1900D185FA /* TTableView.swift in Sources */,
+				430F59DD1E387A1900D185FA /* TTableViewSection.swift in Sources */,
+				430F59DC1E387A1900D185FA /* TTableViewRowModel.swift in Sources */,
+				430F59DE1E387A1900D185FA /* TUpdateInterface.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

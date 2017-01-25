@@ -12,15 +12,15 @@ public extension Data{
     var json:[String:AnyObject]? {
         
         do{
-            return try JSONSerialization.jsonObject(with: self, options: .allowFragments) as?  [String : AnyObject];
+            return try JSONSerialization.jsonObject(with: self, options: .allowFragments) as?  [String : AnyObject]
         }catch _ {
             
         }
         
-        return nil;
+        return nil
     }
     
     var string:String? {
-        return String(data: self, encoding: String.Encoding.utf8);
+        return String(data: self, encoding: String.Encoding.utf8)
     }
 }

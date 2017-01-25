@@ -10,104 +10,94 @@ import UIKit
 
 public extension UITableView{
     public func register(atClass:AnyClass){
-        let idendifier = self.cellIdendifier(atClass: atClass);
-        let nib = UINib(nibName: "\(atClass)", bundle: nil);
-        self.register(nib, forCellReuseIdentifier: idendifier);
+        let idendifier = self.cellIdendifier(atClass: atClass)
+        let nib = UINib(nibName: "\(atClass)", bundle: nil)
+        self.register(nib, forCellReuseIdentifier: idendifier)
     }
     
     public func cell(atClass:AnyClass)->UITableViewCell?{
-        return self.dequeueReusableCell(withIdentifier: self.cellIdendifier(atClass: atClass));
+        return self.dequeueReusableCell(withIdentifier: self.cellIdendifier(atClass: atClass))
     }
     
     public func cellIdendifier(atClass:AnyClass) -> String {
-        return "\(atClass)";
+        return "\(atClass)"
     }
 }
 
-
-public protocol TTableViewRowModel{ }
+public typealias TRowItem = (row:TTableViewRowInterface, indexPath:IndexPath)
 
 public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
-    public private(set) var tableView:UITableView;
+    
     public private(set) var sections:[TTableViewSection] = []
     
-    private var registersCell:[String:Bool] = [:];
-    private var cachesHeightCell:[IndexPath:CGFloat] = [:];
     
-    public var delegate:UITableViewDelegate?;
+    private var tableView:UITableView
+    private var registersCell:[String:Bool] = [:]
+    private var cachesHeightCell:[IndexPath:CGFloat] = [:]
+    
+    private var delegate:UITableViewDelegate?
+    
+    private let tEstimatedRowHeight:CGFloat = 10
     
     public init(tableView:UITableView) {
-        self.tableView = tableView;
+        self.tableView = tableView
         
-        super.init();
+        super.init()
 
-        self.tableView.dataSource = self;
-        self.tableView.delegate = self;
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
     }
     
     public func setupAutomaticDimension(){
-        self.tableView.rowHeight = UITableViewAutomaticDimension;
-        self.tableView.estimatedRowHeight = 10;
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = tEstimatedRowHeight
     }
-    
-    public func expand(atSection:Int, rows: Int...){
-        self.expand(atSection:atSection, rows:rows);
-    }
-    
-    public func collapse(atSection:Int, rows: Int...){
-        self.collapse(atSection:atSection, rows:rows);
-    }
-    
-    public func expand(atSection:Int, rows: [Int]){
-        let really = self.sections[atSection].expandRows(rows);
-        let indexPaths = self.indexsToPath(section: atSection, indexs:really);
-        
-        if (indexPaths.count == 0) {return}
-    
-        let offset = self.tableView.contentOffset;
-        
-        self.tableView.contentOffset = offset;
-        
-        self.tableView.beginUpdates();
-        self.tableView.insertRows(at: indexPaths, with: .top);
-        self.tableView.endUpdates();
-    }
-    
-    public func collapse(atSection:Int, rows: [Int]){
-        let really = self.sections[atSection].collapseRows(rows);
-        let indexPaths = self.indexsToPath(section: atSection, indexs:really);
-        
-        if (indexPaths.count == 0) {return}
-        
-        self.tableView.beginUpdates();
-        self.tableView.deleteRows(at: indexPaths, with: .top);
-        self.tableView.endUpdates();
-    }
-    
+   
     public func append(section:TTableViewSection, index:Int? = nil){
-        var _index = self.sections.count;
+        var _index = self.sections.count
         
         if let tIndex = index{
             _index = tIndex
         }
         
-        self.sections.insert(section, at: _index);
-        
-        section.rows.forEach { (row) in
-            self.checkRegistraionCell(cellClass: row.cellClass);
-        }
+        self.sections.insert(section, at: _index)
     }
     
-    public func row(atIndexPath indexPath:IndexPath)->TTableViewRowInterfase{
+    public func row(atIndexPath indexPath:IndexPath)->TTableViewRowInterface{
         return self.sections[indexPath.section].rows[indexPath.row]
     }
     
-    private func deleteRow(atIndexPath indexPath: IndexPath){
+    
+    public func insertRows(animation:UITableViewRowAnimation = .top, rows:TRowItem...){
+        self.insertRows(rows: rows)
+    }
+    
+    public func insertRows(animation:UITableViewRowAnimation = .top, rows:[TRowItem]){
+        
+        let indexPaths = rows.map { (rowItem) -> IndexPath in
+            return rowItem.indexPath
+        }
+        
+        rows.forEach { (item) in
+            let section = self.sections[item.indexPath.section]
+            section.insert(row: item.row, index:item.indexPath.row)
+        }
+        
+        self.tableView.beginUpdates()
+        self.tableView.insertRows(at: indexPaths, with: animation)
+        self.tableView.endUpdates()
+    }
+    
+    public func deleteRow(atIndexPath indexPath: IndexPath){
         let row = self.row(atIndexPath: indexPath)
         
-        if (!row.removable) { return }
+        if (!row.removable) {
+            return
+        }
         
-        guard let cell = self.tableView.cellForRow(at: indexPath) else { return }
+        guard let cell = self.tableView.cellForRow(at: indexPath) else {
+            return
+        }
         
         row.delete(cell: cell, indexPath: indexPath)
         
@@ -119,27 +109,100 @@ public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
     }
     
     private func indexsToPath(section:Int, indexs:[Int])->[IndexPath]{
-        var result:[IndexPath] = [];
+        var result:[IndexPath] = []
         
         indexs.forEach { (index) in
-            let indexPath = IndexPath(row: index, section: section);
-            result.append(indexPath);
+            let indexPath = IndexPath(row: index, section: section)
+            result.append(indexPath)
         }
         
-        return result;
+        return result
+    }
+    
+    
+    public func expand(atSection:Int, rows: Int...){
+        self.expand(atSection:atSection, rows:rows)
+    }
+    
+    public func collapse(atSection:Int, rows: Int...){
+        self.collapse(atSection:atSection, rows:rows)
+    }
+    
+    public func expand(atSection:Int, rows: [Int]){
+        let really = self.sections[atSection].expandRows(rows)
+        let indexPaths = self.indexsToPath(section: atSection, indexs:really)
+        
+        if (indexPaths.count == 0) {
+            return
+        }
+    
+        let offset = self.tableView.contentOffset
+        
+        self.tableView.contentOffset = offset
+        
+        self.tableView.beginUpdates()
+        self.tableView.insertRows(at: indexPaths, with: .top)
+        self.tableView.endUpdates()
+    }
+    
+    public func collapse(atSection:Int, rows: [Int]){
+        let really = self.sections[atSection].collapseRows(rows)
+        let indexPaths = self.indexsToPath(section: atSection, indexs:really)
+        
+        if (indexPaths.count == 0) {
+            return
+        }
+        
+        self.tableView.beginUpdates()
+        self.tableView.deleteRows(at: indexPaths, with: .top)
+        self.tableView.endUpdates()
     }
     
     private func checkRegistraionCell(cellClass:AnyClass){
-        let cellId = self.tableView.cellIdendifier(atClass: cellClass);
+        let cellId = self.tableView.cellIdendifier(atClass: cellClass)
         
-        if self.registersCell[cellId] != nil { return }
+        if self.registersCell[cellId] != nil {
+            return
+        }
         
-        self.tableView.register(atClass: cellClass);
+        self.tableView.register(atClass: cellClass)
         
-        self.registersCell[cellId] = true;
+        self.registersCell[cellId] = true
     }
     
     // MARK table View delegate
+    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        
+        let row = self.row(atIndexPath: indexPath)
+        
+        if (row.removable){
+            return .delete
+        }
+        
+        return .none
+    }
+    public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let row = self.row(atIndexPath: indexPath)
+        
+        if (!row.removable){
+            return nil
+        }
+        
+        if let text = row.removeText {
+            
+            let remove = UITableViewRowAction(style: .default, title: nil) {(item, indexPath) in
+                self.tableView(tableView, commit:.delete, forRowAt:indexPath)
+            }
+            
+            remove.title = text
+            
+            return [remove]
+        }
+        
+        
+        return nil
+    }
+    
     
     public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         
@@ -157,7 +220,7 @@ public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
     
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         self.delegate?.tableView?(tableView, willDisplay: cell, forRowAt: indexPath)
-        self.cachesHeightCell[indexPath] = cell.frame.height;
+        self.cachesHeightCell[indexPath] = cell.frame.height
     }
     
     public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath){
@@ -168,95 +231,95 @@ public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
         
         if let heightForRowAt = self.delegate?.tableView?(tableView, heightForRowAt: indexPath) {
             if (heightForRowAt > 0){
-                return heightForRowAt;
+                return heightForRowAt
             }
         }
         
-        return self.tableView.rowHeight;
+        return self.tableView.rowHeight
     }
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         if let heightForHeaderInSection = self.delegate?.tableView?(tableView, heightForHeaderInSection: section) {
             
-            return heightForHeaderInSection;
+            return heightForHeaderInSection
             
         }
-        return self.tableView.sectionHeaderHeight;
+        return self.tableView.sectionHeaderHeight
     }
     
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat{
         
         if let heightForFooterInSection = self.delegate?.tableView?(tableView, heightForHeaderInSection: section) {
-            return heightForFooterInSection;
+            return heightForFooterInSection
         }
         
-        return self.tableView.sectionFooterHeight;
+        return self.tableView.sectionFooterHeight
     }
     
     public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if let estimatedHeightForRowAt = self.delegate?.tableView?(tableView, estimatedHeightForRowAt: indexPath) {
-            return estimatedHeightForRowAt;
+            return estimatedHeightForRowAt
         }
         
         if (self.tableView.rowHeight == UITableViewAutomaticDimension) {
             if let cachesHeightCell = self.cachesHeightCell[indexPath] {
                 if (cachesHeightCell > 0){
-                    return cachesHeightCell;
+                    return cachesHeightCell
                 }
             }
         }
         
-        return self.tableView.estimatedRowHeight;
+        return self.tableView.estimatedRowHeight
     }
     
     public func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
         
         if let estimatedHeightForHeaderInSection = self.delegate?.tableView?(tableView, estimatedHeightForHeaderInSection: section) {
-            return estimatedHeightForHeaderInSection;
+            return estimatedHeightForHeaderInSection
         }
         
-        return self.tableView.estimatedSectionHeaderHeight;
+        return self.tableView.estimatedSectionHeaderHeight
     }
     
     public func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
         if let estimatedHeightForFooterInSection = self.delegate?.tableView?(tableView, estimatedHeightForFooterInSection: section) {
-            return estimatedHeightForFooterInSection;
+            return estimatedHeightForFooterInSection
         }
         
-        return self.tableView.estimatedSectionFooterHeight;
+        return self.tableView.estimatedSectionFooterHeight
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate?.tableView?(tableView, didSelectRowAt: indexPath);
+        self.delegate?.tableView?(tableView, didSelectRowAt: indexPath)
         
-//        print("---- begin did select ----")
+        if tableView != self.tableView {
+            return
+        }
         
-        if tableView != self.tableView { return }
+        let section = self.sections[indexPath.section]
         
-        let section = self.sections[indexPath.section];
+        let row = section.rows[indexPath.row]
         
-        let row = section.rows[indexPath.row];
-        
-        let cell = self.tableView.cellForRow(at: indexPath)!;
-        
-        row.didSelect(cell: cell, indexPath:indexPath);
-        
-//        print("---- end did select ----")
+        if let cell = self.tableView.cellForRow(at: indexPath){
+            row.didSelect(cell: cell, indexPath:indexPath)
+        }
     }
     
     public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        self.delegate?.tableView?(tableView, didDeselectRowAt: indexPath);
+        self.delegate?.tableView?(tableView, didDeselectRowAt: indexPath)
         
-        if tableView != self.tableView { return }
+        if tableView != self.tableView {
+            return
+        }
         
-        let section = self.sections[indexPath.section];
+        let section = self.sections[indexPath.section]
         
-        let row = section.rows[indexPath.row];
+        let row = section.rows[indexPath.row]
         
         if let cell = self.tableView.cellForRow(at: indexPath){
-            row.didDeselect(cell: cell, indexPath:indexPath);
+            row.didDeselect(cell: cell, indexPath:indexPath)
         }
     }
 
@@ -268,42 +331,50 @@ public class TTableView:NSObject, UITableViewDataSource, UITableViewDelegate{
             return 0
         }
         
-        return sections.count;
+        return sections.count
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView != self.tableView { return 0}
+        if tableView != self.tableView {
+            return 0
+        }
         
-        return self.sections[section].numberRows;
+        return self.sections[section].numberRows
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
-        if tableView != self.tableView { return UITableViewCell();}
+        if tableView != self.tableView {
+            return UITableViewCell()
+        }
         
-        let section = self.sections[indexPath.section];
+        let section = self.sections[indexPath.section]
         
-        let row = section.rows[indexPath.row];
+        let row = section.rows[indexPath.row]
         
-        let cell = self.tableView.cell(atClass:row.cellClass)!;
+        self.checkRegistraionCell(cellClass: row.cellClass)
         
-        row.build(cell: cell, indexPath:indexPath);
+        if let cell = self.tableView.cell(atClass:row.cellClass){
+            row.build(cell: cell, indexPath:indexPath)
+    
+            return cell
+        }
         
-        return cell;
+        return UITableViewCell()
     }
     
 }
 
 extension TTableView{
     public func according(expand:Bool, atSection:Int, rows: Int...){
-        self.according(expand: expand, atSection:atSection, rows: rows);
+        self.according(expand: expand, atSection:atSection, rows: rows)
     }
     
     public func according(expand:Bool, atSection:Int, rows: [Int]){
         if (expand){
-            self.expand(atSection: atSection, rows: rows);
+            self.expand(atSection: atSection, rows: rows)
         }else{
-            self.collapse(atSection: atSection, rows: rows);
+            self.collapse(atSection: atSection, rows: rows)
         }
     }
 }

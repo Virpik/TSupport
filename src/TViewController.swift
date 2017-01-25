@@ -10,14 +10,17 @@ import UIKit
 
 public extension UIViewController{
     @IBInspectable var TClearBackButton:Bool{
-        get { return true }
+        get {
+            return true
+        }
+        
         set(value) {
             if (!value){
                 return
             }
             
-            let newBackButton = UIBarButtonItem(title: " ", style: .plain, target: self, action: nil);
-            self.navigationItem.backBarButtonItem = newBackButton;
+            let newBackButton = UIBarButtonItem(title: " ", style: .plain, target: self, action: nil)
+            self.navigationItem.backBarButtonItem = newBackButton
         }
     }
 }

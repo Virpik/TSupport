@@ -8,25 +8,53 @@
 
 import UIKit
 
+public extension UIView {
+    public func renderImage()->UIImage? {
+        
+        self.layoutIfNeeded()
+        
+        let scale = UIScreen.main.scale
+        
+        UIGraphicsBeginImageContextWithOptions(self.frame.size, false, scale)
+        
+        if let context = UIGraphicsGetCurrentContext(){
+            self.layer.render(in: context)
+            
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+            
+            UIGraphicsEndImageContext()
+            
+            return image
+        }
+        
+        return nil
+    }
+}
+
 public extension UIView{
     
     @IBInspectable public var tBColor:UIColor? {
         get{
-            return UIColor(cgColor: self.layer.borderColor!);
+            
+            if let cgColor = self.layer.borderColor{
+                return UIColor(cgColor: cgColor)
+            }
+            
+            return nil
         }
         
         set(value){
-            self.layer.borderColor = value?.cgColor;
+            self.layer.borderColor = value?.cgColor
         }
     }
     
     @IBInspectable public var tBWidth:Float {
         get{
-            return self.layer.borderWidth.float;
+            return self.layer.borderWidth.float
         }
         
         set(value){
-            self.layer.borderWidth = value.cgFloat;
+            self.layer.borderWidth = value.cgFloat
         }
     }
     
@@ -36,7 +64,7 @@ public extension UIView{
         }
         
         set(value){
-            self.layer.cornerRadius = self.layer.bounds.height * value.cgFloat;
+            self.layer.cornerRadius = self.layer.bounds.height * value.cgFloat
         }
     }
 }

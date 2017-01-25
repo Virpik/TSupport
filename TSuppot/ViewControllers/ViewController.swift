@@ -9,6 +9,8 @@
 import UIKit
 
 struct TTitle:TTableViewRowModel{
+    typealias TypeCell = TMenuItemCell
+    
     var title:String = "";
     var segueIdendifier:String?;
 }

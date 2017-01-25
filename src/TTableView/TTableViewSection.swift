@@ -7,57 +7,57 @@
 //
 
 public class TTableViewSection:Any {
-    public private(set) var identifier:String?;
+    public private(set) var identifier:String?
     
-    public var numberRows:Int = 0;
+    public var numberRows:Int = 0
     
-    public private(set) var rows:[TTableViewRowInterfase] = [];
+    public private(set) var rows:[TTableViewRowInterface] = []
     
-    public var expanded:Bool = true;
+    public var expanded:Bool = true
     
-    public init(identifier:String? = nil, expanded:Bool = true, rows:TTableViewRowInterfase...) {
-        self.expanded = expanded;
-        self.identifier = identifier;
-        self.rows = rows;
-        self.calcExpandedRows();
+    public init(identifier:String? = nil, expanded:Bool = true, rows:TTableViewRowInterface...) {
+        self.expanded = expanded
+        self.identifier = identifier
+        self.rows = rows
+        self.calcExpandedRows()
     }
     
-    public init(identifier:String? = nil, expanded:Bool = true, rows:[TTableViewRowInterfase]) {
-        self.expanded = expanded;
-        self.identifier = identifier;
-        self.rows = rows;
-        self.calcExpandedRows();
+    public init(identifier:String? = nil, expanded:Bool = true, rows:[TTableViewRowInterface]) {
+        self.expanded = expanded
+        self.identifier = identifier
+        self.rows = rows
+        self.calcExpandedRows()
     }
     
     
-    public func append(row:TTableViewRowInterfase){
+    public func append(row:TTableViewRowInterface){
         self.append(rows: [row])
     }
     
-    public func append(rows:[TTableViewRowInterfase]){
+    public func append(rows:[TTableViewRowInterface]){
         self.rows.append(contentsOf: rows)
         self.calcExpandedRows()
     }
     
-    public func insert(row:TTableViewRowInterfase, index:Int){
+    public func insert(row:TTableViewRowInterface, index:Int){
         self.insert(rows: [row], index: index)
     }
     
-    public func insert(rows:[TTableViewRowInterfase], index:Int){
+    public func insert(rows:[TTableViewRowInterface], index:Int){
         self.rows.insert(contentsOf: rows, at: index)
         self.calcExpandedRows()
     }
     
-    public func delete(row:TTableViewRowInterfase){
+    public func delete(row:TTableViewRowInterface){
         for (index, tRow) in self.rows.enumerated() {
             if (tRow.identifier == row.identifier){
-                self.delete(rowAtIndex: index);
+                self.delete(rowAtIndex: index)
                 break
             }
         }
     }
     
-    public func delete(rows:[TTableViewRowInterfase]){
+    public func delete(rows:[TTableViewRowInterface]){
         rows.forEach { (row) in
             self.delete(row: row)
         }
@@ -76,47 +76,47 @@ public class TTableViewSection:Any {
     }
     
     public func expandRows(_ indexs:Int...) -> [Int]{
-        return self.expandRows(indexs);
+        return self.expandRows(indexs)
     }
     
     public func collapseRows(_ indexs:Int...) -> [Int]{
-        return self.collapseRows(indexs);
+        return self.collapseRows(indexs)
     }
     
     public func expandRows(_ indexs:[Int]) -> [Int]{
-        var result:[Int] = [];
+        var result:[Int] = []
         
         indexs.forEach { (index) in
             if (!self.rows[index].expanded){
-                result.append(index);
-                self.rows[index].expanded = true;
+                result.append(index)
+                self.rows[index].expanded = true
             }
         }
         
-        self.calcExpandedRows();
+        self.calcExpandedRows()
         
-        return result;
+        return result
     }
     
     public func collapseRows(_ indexs:[Int]) -> [Int]{
-        var result:[Int] = [];
+        var result:[Int] = []
         
         indexs.forEach { (index) in
             if (self.rows[index].expanded){
-                result.append(index);
-                self.rows[index].expanded = false;
+                result.append(index)
+                self.rows[index].expanded = false
             }
         }
         
-        self.calcExpandedRows();
+        self.calcExpandedRows()
         
-        return result;
+        return result
     }
     
     private func calcExpandedRows(){
         let expanded = self.rows.filter { (item) -> Bool in
-            return item.expanded;
+            return item.expanded
         }
-        self.numberRows = expanded.count;
+        self.numberRows = expanded.count
     }
 }

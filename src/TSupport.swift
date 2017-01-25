@@ -10,19 +10,37 @@
 import UIKit
 
 public func async(_ block:@escaping ()->Void){
-    DispatchQueue.global().async(execute: block);
+    DispatchQueue.global().async(execute: block)
 }
 
 public  func main(_ block:@escaping ()->Void){
-    DispatchQueue.main.async(execute: block);
+    DispatchQueue.main.async(execute: block)
 }
 
 public func delay(_ delay: TimeInterval, _ block:@escaping ()->Void){
-    DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: block);
+    DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: block)
 }
 
-class TSupport: AnyObject {
+public func firstRun(_ first:@escaping ()->Void, _ notFirst: (()->Void)? = nil){
+    if (TSupport.shared.firstRun){
+        first()
+    }else{
+        notFirst?()
+    }
+}
+
+public class TSupport: AnyObject {
     
+    public static let shared:TSupport = TSupport()
+    
+    private let tFirstRunKey = "tFirstRunKey"
+    
+    private(set) var firstRun:Bool
+    
+    init() {
+        self.firstRun = !UserDefaults.standard.bool(forKey: tFirstRunKey)
+        UserDefaults.standard.set(true, forKey: tFirstRunKey)
+    }
 }
 
 
@@ -40,7 +58,7 @@ public class TLabel:UILabel{
 }
 
 public extension UIView {
-    @IBInspectable public var tBRadius_global:Float {
+    @IBInspectable public var tBRadiusGlobal:Float {
         get{
             return self.layer.cornerRadius.float
         }

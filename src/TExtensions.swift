@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+extension CGRect {
+    public init( _ x: CGFloat, _ y :CGFloat, _ width: CGFloat, _ height: CGFloat) {
+        self.init(x:x, y:y, width:width, height:height)
+    }
+}
+
 extension CGFloat {
     public static func random() -> CGFloat {
         return CGFloat(arc4random()) / CGFloat(UInt32.max)
@@ -16,82 +22,203 @@ extension CGFloat {
 }
 
 extension Int {
-    public var degreesToRadians: Double { return Double(self) * .pi / 180 }
-    public var radiansToDegrees: Double { return Double(self) * 180 / .pi }
+    public var degreesToRadians: Double {
+        return Double(self) * .pi / 180
+    }
+    
+    public var radiansToDegrees: Double {
+        return Double(self) * 180 / .pi
+    }
 }
 
 extension FloatingPoint {
-    public var degreesToRadians: Self { return self * .pi / 180 }
-    public var radiansToDegrees: Self { return self * 180 / .pi }
+    public var degreesToRadians: Self {
+        return self * .pi / 180
+    }
+    
+    public var radiansToDegrees: Self {
+        return self * 180 / .pi
+    }
 }
 
 public extension String{
-    var uInt32:UInt32{ if let int = UInt32(self) { return int}; return 0; }
-    var float:Float{ if let int = Float(self) { return int}; return 0; }
-    var double:Double{ if let int = Double(self) { return int}; return 0; }
-    var int16:Int16{ if let int = Int16(self) { return int}; return 0; }
+    var uInt32:UInt32{
+        if let int = UInt32(self) {
+            return int
+        }
+    
+        return 0
+    }
+    
+    var float:Float{
+        if let int = Float(self) {
+            return int
+        }
+    
+        return 0
+    }
+    
+    var double:Double{
+        if let int = Double(self) {
+            return int
+        }
+    
+        return 0
+    }
+    
+    var int16:Int16{
+        if let int = Int16(self) {
+            return int
+        }
+        
+        return 0
+    }
 }
 
 public extension Int{
-    var uInt32:UInt32{ return UInt32(self) }
-    var float:Float{ return Float(self) }
-    var cgFloat:CGFloat{ return CGFloat(self) }
-    var double:Double{ return Double(self) }
-    var string:String{ return "\(self)" }
+    var uInt32:UInt32{
+        return UInt32(self)
+    }
+    
+    var float:Float{
+        return Float(self)
+    }
+    
+    var cgFloat:CGFloat{
+        return CGFloat(self)
+    }
+    
+    var double:Double{
+        return Double(self)
+    }
+    
+    var string:String{
+        return "\(self)"
+    }
 }
 
 public extension Float{
-    var uInt32:UInt32{ return UInt32(self) }
-    var cgFloat:CGFloat{ return CGFloat(self) }
-    var double:Double{ return Double(self) }
-    var int:Int{ return Int(self) }
-    var string:String{ return "\(self)" }
+    var uInt32:UInt32{
+        return UInt32(self)
+    }
+    
+    var cgFloat:CGFloat{
+        return CGFloat(self)
+    }
+    
+    var double:Double{
+        return Double(self)
+    }
+    
+    var int:Int{
+        return Int(self)
+    }
+    
+    var string:String{
+        return "\(self)"
+    }
 }
 
 public extension CGFloat{
-    var uInt32:UInt32{ return UInt32(self) }
-    var float:Float{ return Float(self) }
-    var double:Double{ return Double(self) }
-    var int:Int{ return Int(self) }
-    var string:String{ return "\(self)" }
+    var uInt32:UInt32{
+        return UInt32(self)
+    }
+    
+    var float:Float{
+        return Float(self)
+    }
+    
+    var double:Double{
+        return Double(self)
+    }
+    
+    var int:Int{
+        return Int(self)
+    }
+    
+    var string:String{
+        return "\(self)"
+    }
 }
 
 public extension Double{
-    var uInt32:UInt32{ return UInt32(self) }
-    var float:Float{ return Float(self) }
-    var cgFloat:CGFloat{ return CGFloat(self) }
-    var int:Int{ return Int(self) }
-    var string:String{ return "\(self)" }
+    var uInt32:UInt32{
+        return UInt32(self)
+    }
+    
+    var float:Float{
+        return Float(self)
+    }
+    
+    var cgFloat:CGFloat{
+        return CGFloat(self)
+    }
+    
+    var int:Int{
+        return Int(self)
+    }
+    
+    var string:String{
+        return "\(self)"
+    }
 }
 
 public extension UInt32{
-    var float:Float{ return Float(self) }
-    var cgFloat:CGFloat{ return CGFloat(self) }
-    var int:Int{ return Int(self) }
-    var double:Double{ return Double(self) }
-    var string:String{ return "\(self)" }
+    var float:Float{
+        return Float(self)
+    }
+    
+    var cgFloat:CGFloat{
+        return CGFloat(self)
+    }
+    
+    var int:Int{
+        return Int(self)
+    }
+    
+    var double:Double{
+        return Double(self)
+    }
+    
+    var string:String{
+        return "\(self)"
+    }
 }
 
 public extension NSNumber{
-    var float:Float{ return Float(self) }
-    var cgFloat:CGFloat{ return CGFloat(self) }
-    var int:Int{ return Int(self) }
-    var double:Double{ return Double(self) }
-    var string:String{ return "\(self)" }
+    var float:Float{
+        return Float(self)
+    }
+    
+    var cgFloat:CGFloat{
+        return CGFloat(self)
+    }
+    
+    var int:Int{
+        return Int(self)
+    }
+    
+    var double:Double{
+        return Double(self)
+    }
+    
+    var string:String{
+        return "\(self)"
+    }
 }
 
 
 extension Date {
     public struct Formatter {
         static let iso1: DateFormatter = {
-            let formatter = DateFormatter();
-            formatter.dateFormat = "yyyy-MM-dd'T'HH-mm-ss";
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd'T'HH-mm-ss"
             return formatter
         }()
         
         static let iso2: DateFormatter = {
-            let formatter = DateFormatter();
-            formatter.dateFormat = "yyyy-MM-dd'T'HH-mm-ssZ";
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd'T'HH-mm-ssZ"
             return formatter
         }()
         
